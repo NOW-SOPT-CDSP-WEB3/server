@@ -1,0 +1,24 @@
+package org.sopt.hyundai.culture.domain;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Getter
+@NoArgsConstructor(access= AccessLevel.PROTECTED)
+public class Culture {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+    private String category;
+    private String name;
+    private String period;
+    private String description;
+    private String shorts;
+    private String image;
+}

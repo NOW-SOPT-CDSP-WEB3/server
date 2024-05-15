@@ -8,7 +8,7 @@ public record ApiResponse(
         Object data
 ) {
     public static ApiResponse of(ErrorCode errorCode){
-        return new ApiResponse(errorCode.getStatus(), false, null, errorCode.getMessage());
+        return new ApiResponse(errorCode.getStatus(), false, errorCode.getMessage(), null);
     }
     public static ApiResponse of(SuccessCode successCode, Object data){
         return new ApiResponse(successCode.getStatus(), true, successCode.getMessage(), data);

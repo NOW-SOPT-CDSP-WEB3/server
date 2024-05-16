@@ -1,5 +1,6 @@
 package org.sopt.hyundai.member.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.sopt.hyundai.common.dto.ApiResponse;
 import org.sopt.hyundai.common.dto.SuccessCode;
@@ -22,7 +23,7 @@ public class MemberController {
 
     @PostMapping("/sign-up")
     public ResponseEntity<ApiResponse> createMember(
-            @RequestBody MemberCreateRequest memberCreateRequest) {
+        @Valid @RequestBody MemberCreateRequest memberCreateRequest) {
         MemberCreateResponse response = memberService.createMember(memberCreateRequest);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.of(SuccessCode.MEMBER_CREATE_SUCCESS, response));

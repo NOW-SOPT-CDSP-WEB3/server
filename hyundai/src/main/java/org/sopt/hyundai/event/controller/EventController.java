@@ -1,6 +1,5 @@
 package org.sopt.hyundai.event.controller;
 
-import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.sopt.hyundai.common.dto.ApiResponse;
 import org.sopt.hyundai.common.dto.SuccessCode;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EventController {
     private final EventService eventService;
     @GetMapping
-    public ResponseEntity<ApiResponse> findAllEvent(
+    public ResponseEntity<ApiResponse> getAllEvents(
             @RequestParam(required = false) String content
     ){
         if (content == null)

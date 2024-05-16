@@ -14,7 +14,10 @@ public class EventService {
     private final EventRepository eventRepository;
 
     public EventListDto findAllEvent(String content){
-        List<EventDto> events = eventRepository.findAllByContent(content).stream().map(EventDto::of).toList();
+        List<EventDto> events = eventRepository.findAllByContent(content).stream()
+                .map(
+                        EventDto::of
+                ).toList();
         return EventListDto.of(events);
     }
 }

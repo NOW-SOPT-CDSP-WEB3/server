@@ -19,6 +19,6 @@ public class Culture {
     private String name;
     private String period;
     private String description;
-    private String shorts;
+    private String summary;
     private String image;
 }

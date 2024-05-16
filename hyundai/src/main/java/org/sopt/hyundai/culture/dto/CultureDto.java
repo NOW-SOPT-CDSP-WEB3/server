@@ -7,10 +7,10 @@ public record CultureDto(
         String description,
         String image,
         String name,
-        String shorts,
+        String summary,
         String period
 ) {
     public static CultureDto of(Culture culture){
-        return new CultureDto(culture.getId(), culture.getDescription(), culture.getImage(), culture.getName(), culture.getShorts(), culture.getPeriod());
+        return new CultureDto(culture.getId(), culture.getDescription(), culture.getImage(), culture.getName(), culture.getSummary(), culture.getPeriod());
     }
 }

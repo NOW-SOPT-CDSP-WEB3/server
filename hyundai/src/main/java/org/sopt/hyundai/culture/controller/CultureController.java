@@ -16,7 +16,7 @@ public class CultureController {
     private final CultureService cultureService;
 
     @GetMapping
-    public ResponseEntity<ApiResponse> findAllCulture(){
+    public ResponseEntity<ApiResponse> getAllCultures(){
         return ResponseEntity.ok(ApiResponse.of( SuccessCode.GET_CULTURE_LIST_SUCCESS, cultureService.findAllCulture()));
     }
 }

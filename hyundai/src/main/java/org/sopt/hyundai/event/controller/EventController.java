@@ -1,5 +1,6 @@
 package org.sopt.hyundai.event.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.sopt.hyundai.common.dto.ApiResponse;
 import org.sopt.hyundai.common.dto.SuccessCode;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/events")
 public class EventController {
     private final EventService eventService;
+
+    @Operation(summary = "이벤트 리스트 조회 API", description = "모든 이벤트를 조회합니다.")
     @GetMapping
     public ResponseEntity<ApiResponse> getAllEvents(
             @RequestParam(required = false) String content

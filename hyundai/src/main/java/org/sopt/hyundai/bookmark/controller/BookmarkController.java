@@ -1,5 +1,6 @@
 package org.sopt.hyundai.bookmark.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.sopt.hyundai.bookmark.service.BookmarkService;
 import org.sopt.hyundai.bookmark.service.dto.BookMarkCreateRequest;
@@ -16,6 +17,7 @@ public class BookmarkController {
 
     private final BookmarkService bookmarkService;
 
+    @Operation(summary = "북마크 추가/취소 API", description = "북마크를 추가하거나 취소합니다.")
     @PostMapping("/bookmarks")
     public ResponseEntity<ApiResponse> addLike(@RequestBody BookMarkCreateRequest bookMarkCreateRequest) {
         boolean isBookmarked = bookmarkService.addLike(bookMarkCreateRequest);

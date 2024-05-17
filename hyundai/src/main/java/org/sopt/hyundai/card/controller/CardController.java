@@ -1,5 +1,6 @@
 package org.sopt.hyundai.card.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.sopt.hyundai.card.domain.CardCategory;
 import org.sopt.hyundai.card.domain.CardTag;
@@ -20,11 +21,13 @@ import java.util.List;
 public class CardController {
     private final CardService cardService;
 
+    @Operation(summary = "전체 카드 조회 API", description = "모든 카드를 조회합니다.")
     @GetMapping("/cards")
     public ResponseEntity<ApiResponse> getAllCards() {
         return ResponseEntity.ok(ApiResponse.of(SuccessCode.GET_ALL_CARD_LIST_SUCCESS, cardService.findAllCards()));
     }
 
+    @Operation(summary = "카테고리별 태그 필터링 카드 조회 API", description = "카테고리별로 태그로 필터링하여 카드를 조회합니다.")
     @GetMapping("/cards/filter")
     public ResponseEntity<ApiResponse> getCardsByCategoryAndTags(
             @RequestParam("category") CardCategory category,

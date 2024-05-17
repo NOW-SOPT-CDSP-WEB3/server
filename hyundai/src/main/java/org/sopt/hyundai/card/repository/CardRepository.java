@@ -10,3 +10,4 @@ import java.util.List;
 public interface CardRepository extends JpaRepository<Card, Long> {
     List<Card> findAllByCardCategoryAndCardTagsIn(CardCategory cardCategory, List<CardTag> cardTags);
 }
+

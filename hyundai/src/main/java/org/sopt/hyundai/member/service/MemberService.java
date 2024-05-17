@@ -37,4 +37,9 @@ public class MemberService {
 
         return new MemberLoginResponse(member.getId(), member.getEmail());
     }
+
+    public Member findById(long memberId) {
+        return memberRepository.findById(memberId).orElseThrow(
+                () -> new BusinessException(ErrorCode.MEMBER_NOT_FOUND_BY_ID_EXCEPTION));
+    }
 }

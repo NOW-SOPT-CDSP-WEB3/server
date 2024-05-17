@@ -7,6 +7,8 @@ import org.sopt.hyundai.card.repository.CardRepository;
 import org.sopt.hyundai.card.service.dto.CardCategoryResponse;
 import org.sopt.hyundai.card.service.dto.CardResponse;
 import org.sopt.hyundai.card.service.dto.CardsListResponse;
+import org.sopt.hyundai.common.dto.ErrorCode;
+import org.sopt.hyundai.exception.BusinessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,5 +36,11 @@ public class CardService {
                 .toList();
 
         return CardsListResponse.from(cardCategories);
+    }
+
+    public Card findById(long cardId) {
+        return cardRepository.findById(cardId).orElseThrow(
+                () -> new BusinessException(ErrorCode.CARD_NOT_FOUND_BY_ID_EXCEPTION)
+        );
     }
 }

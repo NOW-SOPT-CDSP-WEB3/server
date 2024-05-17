@@ -1,5 +1,6 @@
 package org.sopt.hyundai.member.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.sopt.hyundai.common.dto.ApiResponse;
@@ -24,6 +25,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    @Operation(summary = "회원가입 API", description = "회원가입을 처리합니다.")
     @PostMapping("/sign-up")
     public ResponseEntity<ApiResponse> createMember(
             @Valid @RequestBody MemberCreateRequest memberCreateRequest) {
@@ -32,6 +34,7 @@ public class MemberController {
                 .body(ApiResponse.of(SuccessCode.MEMBER_CREATE_SUCCESS, response));
     }
 
+    @Operation(summary = "로그인 API", description = "로그인을 처리합니다.")
     @PostMapping("/login")
     public ResponseEntity<ApiResponse> loginMember(
             @RequestHeader

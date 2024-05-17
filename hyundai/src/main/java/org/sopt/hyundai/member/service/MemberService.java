@@ -7,6 +7,8 @@ import org.sopt.hyundai.member.domain.Member;
 import org.sopt.hyundai.member.repository.MemberRepository;
 import org.sopt.hyundai.member.service.dto.MemberCreateRequest;
 import org.sopt.hyundai.member.service.dto.MemberCreateResponse;
+import org.sopt.hyundai.member.service.dto.MemberLoginRequest;
+import org.sopt.hyundai.member.service.dto.MemberLoginResponse;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,5 +24,17 @@ public class MemberService {
 
         Member member = memberRepository.save(Member.create(memberCreateRequest.email(), memberCreateRequest.password()));
         return new MemberCreateResponse(member.getId(), member.getEmail());
+    }
+
+    public MemberLoginResponse loginMember(MemberLoginRequest memberLoginRequest) {
+        Member member = memberRepository.findByEmail(memberLoginRequest.email()).orElseThrow(
+                () -> new BusinessException(ErrorCode.LOGIN_FAILED)
+        );
+
+        if (!memberLoginRequest.password().equals(member.getPassword())) {
+            throw new BusinessException(ErrorCode.LOGIN_FAILED);
+        }
+
+        return new MemberLoginResponse(member.getId(), member.getEmail());
     }
 }

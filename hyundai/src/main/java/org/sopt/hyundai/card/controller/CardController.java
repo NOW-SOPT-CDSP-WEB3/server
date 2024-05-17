@@ -3,8 +3,6 @@ package org.sopt.hyundai.card.controller;
 import lombok.RequiredArgsConstructor;
 import org.sopt.hyundai.card.domain.CardCategory;
 import org.sopt.hyundai.card.domain.CardTag;
-
-import lombok.RequiredArgsConstructor;
 import org.sopt.hyundai.card.service.CardService;
 import org.sopt.hyundai.common.dto.ApiResponse;
 import org.sopt.hyundai.common.dto.SuccessCode;
@@ -15,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor

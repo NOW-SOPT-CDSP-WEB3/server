@@ -41,8 +41,14 @@ public class Card {
     @Column(name = "tag")
     private List<CardTag> cardTags;
 
+    @Column(nullable = false)
+    private int visaFee;
+
+    @Column(nullable = false)
+    private int domesticFee;
+
     @Builder
-    public Card(String name, boolean invitation, String description, String image, boolean hasEvent, CardCategory cardCategory, List<CardTag> cardTags) {
+    public Card(String name, boolean invitation, String description, String image, boolean hasEvent, CardCategory cardCategory, List<CardTag> cardTags, int visaFee, int domesticFee) {
         this.name = name;
         this.invitation = invitation;
         this.description = description;
@@ -50,9 +56,11 @@ public class Card {
         this.hasEvent = hasEvent;
         this.cardCategory = cardCategory;
         this.cardTags = cardTags;
+        this.visaFee = visaFee;
+        this.domesticFee = domesticFee;
     }
 
-    public static Card create(String name, boolean invitation, String description, String image, boolean hasEvent, CardCategory cardCategory, List<CardTag> cardTags) {
+    public static Card create(String name, boolean invitation, String description, String image, boolean hasEvent, CardCategory cardCategory, List<CardTag> cardTags, int visaFee, int domesticFee) {
         return Card.builder()
                 .name(name)
                 .invitation(invitation)
@@ -61,6 +69,8 @@ public class Card {
                 .hasEvent(hasEvent)
                 .cardCategory(cardCategory)
                 .cardTags(cardTags)
+                .visaFee(visaFee)
+                .domesticFee(domesticFee)
                 .build();
     }
 }

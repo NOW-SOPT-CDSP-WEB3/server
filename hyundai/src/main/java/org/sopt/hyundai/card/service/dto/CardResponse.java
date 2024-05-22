@@ -11,7 +11,9 @@ public record CardResponse(
         String description,
         String image,
         boolean hasEvent,
-        List<String> cardTags
+        List<String> cardTags,
+        int visaFee,
+        int domesticFee
 ) {
     public static CardResponse from(Card card) {
         return new CardResponse(
@@ -23,7 +25,9 @@ public record CardResponse(
                 card.isHasEvent(),
                 card.getCardTags().stream()
                         .map(Enum::name)
-                        .toList()
+                        .toList(),
+                card.getVisaFee(),
+                card.getDomesticFee()
         );
     }
 }
